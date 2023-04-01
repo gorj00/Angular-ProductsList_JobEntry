@@ -5,7 +5,8 @@ import { HttpService } from '../../services/http.service'
 import { StoreModule } from '@ngrx/store'
 import { ProductsFeatureRoutingModule } from './products-routing.module'
 
-// import { ProductsEffects } from 'src/app/ngrx/store/blog/blog.effects';
+import { ProductsEffects } from 'src/app/store/products/products.effects';
+import { productsFeature } from 'src/app/store/products/products.feature';
 // import { BlogDataService } from './blog-dara.service';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,8 +22,8 @@ import { ProductsService } from 'src/app/services/products.service';
   imports: [
     CommonModule,
     ProductsFeatureRoutingModule,
-    // StoreModule.forFeature(blogFeature),
-    // EffectsModule.forFeature([BlogEffects]),
+    StoreModule.forFeature(productsFeature),
+    EffectsModule.forFeature([ProductsEffects]),
     FormsModule,
     ReactiveFormsModule,
   ],
