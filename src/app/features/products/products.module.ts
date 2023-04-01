@@ -4,7 +4,7 @@ import { EffectsModule } from '@ngrx/effects'
 import { HttpService } from '../../services/http.service'
 import { StoreModule } from '@ngrx/store'
 import { ProductsFeatureRoutingModule } from './products-routing.module'
-
+import { ProductsDataService } from './products-data.service';
 import { ProductsEffects } from 'src/app/store/products/products.effects';
 import { productsFeature } from 'src/app/store/products/products.feature';
 // import { BlogDataService } from './blog-dara.service';
@@ -30,6 +30,7 @@ import { ProductsService } from 'src/app/services/products.service';
   providers: [
     HttpService,
     ProductsService,
+    ProductsDataService,
     { provide: 'apiUrl', useValue: 'https://dummyjson.com' },
     // BlogPostDataService,
   ],
