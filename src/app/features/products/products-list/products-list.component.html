@@ -1,6 +1,4 @@
-<div class="card" *ngIf="data$ | async as data"
-  [attr.data-test]="'products-list-card'"
->
+<div class="card" *ngIf="data$ | async as data">
 
   <p-table
     [value]="data.selectedProducts"
@@ -20,7 +18,6 @@
     <ng-template pTemplate="body" let-product>
       <tr
         [ngClass]="{'opacity-10': product.quantity === 0}"
-        [attr.data-test]="'product-row'"
       >
 
         <td>

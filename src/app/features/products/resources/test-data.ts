@@ -92,7 +92,7 @@ export const productsListData = {
         'https://i.dummyjson.com/data/products/2/3.jpg',
         'https://i.dummyjson.com/data/products/2/thumbnail.jpg',
       ],
-      quantity: 1,
+      quantity: 2,
     },
     {
       id: 3,

@@ -1,5 +1,5 @@
 import { ComponentFixture } from '@angular/core/testing';
-import { DebugElement, ElementRef } from "@angular/core";
+import { Component, DebugElement, ElementRef } from "@angular/core";
 import { By } from "@angular/platform-browser";
 
 export function queryAllByTestAttr<T>(
@@ -24,6 +24,20 @@ export function queryByCss<T>(
   selector: string,
 ): DebugElement {
   return debugElement.query(By.css(selector));
+}
+
+export function queryAllByCss<T>(
+  debugElement: DebugElement,
+  selector: string,
+): DebugElement[] {
+  return debugElement.queryAll(By.css(selector));
+}
+
+export function queryByDirective<T>(
+  debugElement: DebugElement,
+  component: any,
+): DebugElement {
+  return debugElement.query(By.directive(component));
 }
 
 export function testAttr(selector: string, cssAppend: string = '') {
