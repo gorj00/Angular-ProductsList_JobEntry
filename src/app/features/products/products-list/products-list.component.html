@@ -1,6 +1,9 @@
 <div class="card" *ngIf="data$ | async as data">
 
-  <p-table [value]="data.selectedProducts" [tableStyle]="{'min-width': '60rem'}">
+  <p-table
+    [value]="data.selectedProducts"
+    [tableStyle]="{'min-width': '60rem'}"
+  >
 
     <ng-template pTemplate="header">
       <tr>
@@ -8,12 +11,19 @@
         <th></th>
         <th>Quantity</th>
         <th>Price</th>
+        <th></th>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="body" let-product>
       <tr [ngClass]="{'opacity-10': product.quantity === 0}">
-        <td><img [src]="product.thumbnail" [alt]="product.title" width="100" class="shadow-4" /></td>
+        <td>
+          <img
+            [src]="product.thumbnail"
+            [alt]="product.title"
+            width="100"
+            class="shadow-4" />
+        </td>
         <td>{{product.title | titlecase}}</td>
 
         <td>
@@ -25,12 +35,27 @@
         </td>
 
         <td>{{product.price * product.quantity | currency:'USD'}}</td>
+        <td>
+          <button
+            type="button"
+            pButton pRipple
+            icon="pi pi-trash"
+            class="p-button-secondary"
+            (click)="removeProductWithDelay(product.id, 200)"
+          ></button>
+        </td>
       </tr>
     </ng-template>
 
     <ng-template pTemplate="summary">
-      <div class="text-right">
+      <div class="flex align-items-center justify-content-end pr-5">
+        <div class="text-2xl text-right">
           {{ getProductListPrice(data.selectedProducts) | currency:'USD' }}
+          <div class="text-sm text-right pt-2">
+            Total price including VAT
+          </div>
+        </div>
+
       </div>
     </ng-template>
   </p-table>
