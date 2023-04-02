@@ -1,34 +1,38 @@
 <div class="card" *ngIf="data$ | async as data">
 
-    <p-table [value]="data.selectedProducts" [tableStyle]="{'min-width': '60rem'}">
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Product</th>
-                <th></th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="body" let-product>
-            <tr [ngClass]="{'opacity-10': product.quantity === 0}">
-                <td><img [src]="product.thumbnail" [alt]="product.title" width="100" class="shadow-4" /></td>
-                <td>{{product.title | titlecase}}</td>
+  <p-table [value]="data.selectedProducts" [tableStyle]="{'min-width': '60rem'}">
 
-                <td>
-                  <app-quantity-field
-                    [quantity]="product.quantity"
-                    (quantityChangeByTypeAction)="onQuantityChangedByType($event, product.id)"
-                    (quantityChangeByValueAction)="onQuantityChangedWithNewVal($event, product.id)"
-                  ></app-quantity-field>
-                </td>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Product</th>
+        <th></th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </ng-template>
 
-                <td>{{product.price * product.quantity | currency:'USD'}}</td>
-            </tr>
-        </ng-template>
-        <ng-template pTemplate="summary">
-            <div class="text-right">
-                {{ getProductListPrice(data.selectedProducts) | currency:'USD' }}
-            </div>
-        </ng-template>
-    </p-table>
+    <ng-template pTemplate="body" let-product>
+      <tr [ngClass]="{'opacity-10': product.quantity === 0}">
+        <td><img [src]="product.thumbnail" [alt]="product.title" width="100" class="shadow-4" /></td>
+        <td>{{product.title | titlecase}}</td>
+
+        <td>
+          <app-quantity-field
+            [quantity]="product.quantity"
+            (quantityChangeByTypeAction)="onQuantityChangedByType($event, product.id)"
+            (quantityChangeByValueAction)="onQuantityChangedWithNewVal($event, product.id)"
+          ></app-quantity-field>
+        </td>
+
+        <td>{{product.price * product.quantity | currency:'USD'}}</td>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="summary">
+      <div class="text-right">
+          {{ getProductListPrice(data.selectedProducts) | currency:'USD' }}
+      </div>
+    </ng-template>
+  </p-table>
+
 </div>
