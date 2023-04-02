@@ -3,6 +3,7 @@
   <button type="button" pButton
     icon="pi pi-minus"
     class="p-button-danger"
+    [attr.data-test]="'qnty-decrease-btn'"
     (click)="decreaseQnty(quantity)"
   ></button>
 
@@ -10,12 +11,14 @@
     [value]="quantity + 'x'"
     class="text-center w-4rem"
     pKeyFilter="int"
+    [attr.data-test]="'qnty-input'"
     (change)="onChangeValue($event)"
   />
 
   <button type="button" pButton
     icon="pi pi-plus"
     class="p-button-success"
+    [attr.data-test]="'qnty-increase-btn'"
     (click)="increaseQnty(quantity)"
   ></button>
 

@@ -34,10 +34,7 @@ export class ProductsListComponent {
     }
   }
 
-  onQuantityChangedWithNewVal(
-    quantity: number,
-    itemId: number,
-  ) {
+  onQuantityChangedWithNewVal(quantity: number, itemId: number) {
     this.productsFacade.changeProductQuantityByValue(itemId, quantity);
 
     if (quantity === 0) {
@@ -46,7 +43,6 @@ export class ProductsListComponent {
   }
 
   getProductListPrice(list: ISelectedProduct[]) {
-    return list.reduce((partialSum, a) => partialSum + (a.price * a.quantity), 0)
-
+    return list.reduce((partialSum, p) => partialSum + p.price * p.quantity, 0);
   }
 }
