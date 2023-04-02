@@ -8,6 +8,11 @@ body {
 @import '~primeng/resources/themes/lara-dark-indigo/theme.css';
 @import '~primeng/resources/primeng.min.css';
 
-.qnty-w {
-  width: 30px !important;
+.product-img {
+  width:  80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
 }
+
+

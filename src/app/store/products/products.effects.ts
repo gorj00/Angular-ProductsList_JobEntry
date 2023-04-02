@@ -33,7 +33,7 @@ export class ProductsEffects implements OnInitEffects {
           (product) => ProductsActions.selected_products_add_item(product),
         )),
       ),
-      take(3),
+      take(5),
     ),
   );
 
