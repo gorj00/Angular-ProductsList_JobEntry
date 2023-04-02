@@ -1,0 +1,22 @@
+<div class="p-inputgroup block">
+
+  <button type="button" pButton
+    icon="pi pi-minus"
+    class="p-button-danger"
+    (click)="decreaseQnty(quantity)"
+  ></button>
+
+  <input type="text" pInputText
+    [value]="quantity + 'x'"
+    class="text-center w-4rem"
+    pKeyFilter="int"
+    (change)="onChangeValue($event)"
+  />
+
+  <button type="button" pButton
+    icon="pi pi-plus"
+    class="p-button-success"
+    (click)="increaseQnty(quantity)"
+  ></button>
+
+</div>

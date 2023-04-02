@@ -53,20 +53,37 @@ export const productsFeature = createFeature({
       selectedProductsTotal: state.selectedProductsTotal - 1,
     })),
 
-    on(ProductsActions.selected_products_item_qnty_change, (
-      state: IProductsState, { itemId, qntyChange }
+    on(ProductsActions.selected_products_item_qnty_change_by_type, (
+      state: IProductsState, { itemId, qntyChangeType }
     ) => {
       const item = state.selectedProducts.find(selProduct => selProduct.id === itemId);
-      const selectedProducts = [...state.selectedProducts]
+      let selectedProducts = [...state.selectedProducts]
       if (item) {
-        let newQnty =
-          qntyChange === EProductQntyChange.INCREASE
+        const newQnty =
+          qntyChangeType === EProductQntyChange.INCREASE
             ? item.quantity + 1
-            : qntyChange === EProductQntyChange.DECREASE
+            : qntyChangeType === EProductQntyChange.DECREASE
             ? item.quantity - 1
             : item.quantity;
 
-        selectedProducts.push({...item, quantity: newQnty })
+        selectedProducts = selectedProducts.map((el) =>
+          el.id === itemId ? {...el, quantity: newQnty} : el,
+        );
+      }
+      return ({
+      ...state,
+      selectedProducts,
+    })}),
+
+    on(ProductsActions.selected_products_item_qnty_change_by_value, (
+      state: IProductsState, { itemId, newVal }
+    ) => {
+      const item = state.selectedProducts.find(selProduct => selProduct.id === itemId);
+      let selectedProducts = [...state.selectedProducts]
+      if (item) {
+        selectedProducts = selectedProducts.map((el) =>
+          el.id === itemId ? {...el, quantity: newVal} : el,
+        );
       }
       return ({
       ...state,

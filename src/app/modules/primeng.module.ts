@@ -8,6 +8,8 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
+import { TableModule } from 'primeng/table';
+import { KeyFilterModule } from 'primeng/keyfilter';
 
 @NgModule({
   imports: [CommonModule],
@@ -20,6 +22,8 @@ import { DividerModule } from 'primeng/divider';
     InputTextModule,
     CardModule,
     DividerModule,
+    TableModule,
+    KeyFilterModule,
   ],
 })
 export class PrimeNgModule {}

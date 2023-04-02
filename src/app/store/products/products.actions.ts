@@ -10,7 +10,8 @@ enum actionTypes {
 
   SELECTED_PRODUCTS_ADD_ITEM = 'SELECTED_PRODUCTS_ADD_ITEM',
   SELECTED_PRODUCTS_REMOVE_ITEM = 'SELECTED_PRODUCTS_REMOVE_ITEM',
-  SELECTED_PRODUCTS_ITEM_QNTY_CHANGE = 'SELECTED_PRODUCTS_ITEM_QNTY_CHANGE',
+  SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_TYPE = 'SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_TYPE',
+  SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_VALUE = 'SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_VALUE',
 }
 
 export const ProductsActions = createActionGroup({
@@ -19,6 +20,7 @@ export const ProductsActions = createActionGroup({
     [actionTypes.PRODUCTS_MODULE_INIT]: emptyProps(),
 
     [actionTypes.PRODUCTS_LIST_REQUEST]: (limit: number) => ({limit}),
+
     [actionTypes.PRODUCTS_LIST_RESPONSE]: (
       items: IProduct[],
       total: number,
@@ -26,12 +28,21 @@ export const ProductsActions = createActionGroup({
     [actionTypes.PRODUCTS_LIST_FAILURE]: (error: any) => ({error}),
 
     [actionTypes.SELECTED_PRODUCTS_ADD_ITEM]: (item: IProduct) => ({item}),
+
     [actionTypes.SELECTED_PRODUCTS_REMOVE_ITEM]: (itemId: number) => ({itemId}),
-    [actionTypes.SELECTED_PRODUCTS_ITEM_QNTY_CHANGE]: (
+    
+    [actionTypes.SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_TYPE]: (
       itemId: number,
-      qntyChange: EProductQntyChange,
+      qntyChangeType: EProductQntyChange,
     ) => ({
-      itemId, qntyChange
+      itemId, qntyChangeType
+    }),
+
+    [actionTypes.SELECTED_PRODUCTS_ITEM_QNTY_CHANGE_BY_VALUE]: (
+      itemId: number,
+      newVal: number,
+    ) => ({
+      itemId, newVal
     }),
   },
 });
