@@ -3,6 +3,7 @@
   <p-table
     [value]="data.selectedProducts"
     [tableStyle]="{'min-width': '60rem'}"
+    [attr.data-test]="'products-table'"
   >
 
     <ng-template pTemplate="header">
@@ -18,6 +19,7 @@
     <ng-template pTemplate="body" let-product>
       <tr
         [ngClass]="{'opacity-10': product.quantity === 0}"
+        [attr.data-test]="'products-table-row'"
       >
 
         <td>
@@ -47,6 +49,7 @@
             icon="pi pi-trash"
             class="p-button-secondary"
             (click)="removeProductWithDelay(product.id, 200)"
+            [attr.data-test]="'remove-product-btn'"
           ></button>
         </td>
 
@@ -57,7 +60,9 @@
       <div class="flex align-items-center justify-content-end pr-5"
       *ngIf="data.selectedProducts.length">
         <div class="text-2xl text-right">
-          {{ getProductListPrice(data.selectedProducts) | currency:'USD' }}
+          <span [attr.data-test]="'products-list-price-total'">
+            {{ getProductListPrice(data.selectedProducts) | currency:'USD' }}
+          </span>
           <div class="text-sm text-right pt-2">
             Total price including VAT
           </div>
@@ -67,7 +72,10 @@
 
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="7" class="text-xl">No products</td>
+        <td colspan="7"
+          class="text-xl"
+          [attr.data-test]="'no-products-message'"
+        >No products</td>
       </tr>
     </ng-template>
 

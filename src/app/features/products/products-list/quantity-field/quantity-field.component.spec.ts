@@ -36,7 +36,7 @@ describe('QuantityFieldComponent', () => {
     expect(input.nativeElement.value).toContain('2');
   });
 
-  it('should have template quantity appended with `x`', () => {
+  it('should have template quantity appended with an `x`', () => {
     const input = queryByTestAttr(el, 'qnty-input');
     expect(input.nativeElement.value).toContain('x');
   });
@@ -88,16 +88,17 @@ describe('QuantityFieldComponent', () => {
       expect(input).toBeTruthy();
 
       input.triggerEventHandler('change', { target: { value: 'A' } });
+      const currentQuantity = 2;
       // the current quantity will be sent
-      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(2);
+      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(currentQuantity);
       input.triggerEventHandler('change', { target: { value: '+' } });
-      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(2);
+      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(currentQuantity);
       input.triggerEventHandler('change', { target: { value: '-1' } });
-      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(2);
+      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(currentQuantity);
       input.triggerEventHandler('change', { target: { value: '-5' } });
-      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(2);
+      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(currentQuantity);
       input.triggerEventHandler('change', { target: { value: '' } });
-      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(2);
+      expect(component.quantityChangeByValueAction.emit).toHaveBeenCalledWith(currentQuantity);
     });
   });
 
